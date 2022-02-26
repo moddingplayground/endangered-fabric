@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+
+  "id": "endangered",
+  "version": "${version}",
+  "license": [
+    "MIT (Code)",
+    "All Rights Reserved (Assets)"
+  ],
+
+  "name": "Endangered",
+  "icon": "assets/endangered/icon.png",
+  "description": "Adds mobs for the awareness of our world's most in-need species",
+
+  "authors": [
+    "Gaetano Russo (Ninni)",
+    "Daniel Orr (Andante)"
+  ],
+  "contact": {
+    "homepage": "https://moddingplayground.net/endangered",
+    "sources": "https://github.com/moddingplayground/endangered-fabric",
+    "issues": "https://github.com/moddingplayground/endangered-fabric/issues"
+  },
+  "custom": {
+    "modmenu": { "links": { "mod.endangered.contact.discord": "https://discord.moddingplayground.net" } }
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [ "net.moddingplayground.endangered.impl.EndangeredImpl" ]
+  },
+  "mixins": [ "endangered.mixins.json" ],
+
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=1.18",
+    "fabricloader": ">=0.12",
+    "fabric": ">=0.46",
+    "frame": ">=0.12.1"
+  }
+}
