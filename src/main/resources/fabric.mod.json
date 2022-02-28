@@ -27,7 +27,13 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [ "net.moddingplayground.endangered.impl.EndangeredImpl" ]
+    "main":     [
+      "net.moddingplayground.endangered.impl.EndangeredImpl",
+      "net.moddingplayground.endangered.impl.entity.EndangeredEntityTypeImpl"
+    ],
+    "toymaker": [ "net.moddingplayground.endangered.impl.data.EndangeredToymakerImpl" ],
+
+    "client":   [ "net.moddingplayground.endangered.impl.client.EndangeredClientImpl" ]
   },
   "mixins": [ "endangered.mixins.json" ],
 
