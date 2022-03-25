@@ -9,6 +9,9 @@ import net.minecraft.entity.ai.goal.SitGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.TrackOwnerAttackerGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,6 +34,8 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
         this.animation = new AnimationFactory(this);
     }
 
+    /* Initialization */
+
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
@@ -48,6 +53,14 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
         data.addAnimationController(new AnimationController<>(this, "controller", 10, this::animate));
     }
 
+    public static DefaultAttributeContainer.Builder createPangolinAttributes() {
+        return MobEntity.createMobAttributes()
+                        .add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0D)
+                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.1D);
+    }
+
+    /* Animation */
+
     public <E extends IAnimatable> PlayState animate(AnimationEvent<E> event) {
         AnimationController<?> controller = event.getController();
         float limbd = event.getLimbSwingAmount();
@@ -55,6 +68,8 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
         controller.setAnimation(new AnimationBuilder().addAnimation( "animation.pangolin." + (moving ? "walk" : "idle"), true));
         return PlayState.CONTINUE;
     }
+
+    /* Miscellaneous Overrides */
 
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
