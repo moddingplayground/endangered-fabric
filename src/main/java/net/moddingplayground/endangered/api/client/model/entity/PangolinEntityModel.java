@@ -1,4 +1,4 @@
-package net.moddingplayground.endangered.impl.client.model.entity;
+package net.moddingplayground.endangered.api.client.model.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,7 +15,7 @@ import java.util.Optional;
 import static net.minecraft.client.render.entity.model.EntityModelPartNames.*;
 
 @Environment(EnvType.CLIENT)
-public class PangolinEntityModel extends AnimatedGeoModel<PangolinEntity> {
+public class PangolinEntityModel<E extends PangolinEntity> extends AnimatedGeoModel<E> {
     public static final Identifier MODEL = new Identifier(Endangered.MOD_ID, "geo/entity/pangolin/pangolin.geo.json");
     public static final Identifier TEXTURE = new Identifier(Endangered.MOD_ID, "textures/entity/pangolin/pangolin.png");
     public static final Identifier ANIMATION = new Identifier(Endangered.MOD_ID, "animations/entity/pangolin/pangolin.animation.json");
@@ -24,7 +24,7 @@ public class PangolinEntityModel extends AnimatedGeoModel<PangolinEntity> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void setLivingAnimations(PangolinEntity entity, Integer id, AnimationEvent predicate) {
+    public void setLivingAnimations(E entity, Integer id, AnimationEvent predicate) {
         super.setLivingAnimations(entity, id, predicate);
 
         AnimationProcessor<?> processor = this.getAnimationProcessor();
@@ -36,17 +36,17 @@ public class PangolinEntityModel extends AnimatedGeoModel<PangolinEntity> {
     }
 
     @Override
-    public Identifier getModelLocation(PangolinEntity entity) {
+    public Identifier getModelLocation(E entity) {
         return MODEL;
     }
 
     @Override
-    public Identifier getTextureLocation(PangolinEntity entity) {
+    public Identifier getTextureLocation(E entity) {
         return TEXTURE;
     }
 
     @Override
-    public Identifier getAnimationFileLocation(PangolinEntity entity) {
+    public Identifier getAnimationFileLocation(E entity) {
         return ANIMATION;
     }
 }

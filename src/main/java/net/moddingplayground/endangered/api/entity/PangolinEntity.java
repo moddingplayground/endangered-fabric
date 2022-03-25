@@ -29,7 +29,7 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
     public static final float WALKING_THRESHOLD = 0.06F;
     private final AnimationFactory animation;
 
-    protected PangolinEntity(EntityType<? extends TameableEntity> type, World world) {
+    protected PangolinEntity(EntityType<? extends PangolinEntity> type, World world) {
         super(type, world);
         this.animation = new AnimationFactory(this);
     }
@@ -48,11 +48,6 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
         this.targetSelector.add(1, new TrackOwnerAttackerGoal(this));
     }
 
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 10, this::animate));
-    }
-
     public static DefaultAttributeContainer.Builder createPangolinAttributes() {
         return MobEntity.createMobAttributes()
                         .add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0D)
@@ -60,6 +55,11 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
     }
 
     /* Animation */
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 10, this::animate));
+    }
 
     public <E extends IAnimatable> PlayState animate(AnimationEvent<E> event) {
         AnimationController<?> controller = event.getController();
