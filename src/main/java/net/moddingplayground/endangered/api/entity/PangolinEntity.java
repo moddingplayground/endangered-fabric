@@ -58,7 +58,7 @@ public class PangolinEntity extends TameableEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 10, this::animate));
+        data.addAnimationController(new AnimationController<>(this, "controller", 5, this::animate));
     }
 
     public <E extends IAnimatable> PlayState animate(AnimationEvent<E> event) {

@@ -27,7 +27,7 @@
           ]
         },
         {
-          "name": "tailScales",
+          "name": "tail_scales",
           "parent": "tail",
           "pivot": [0, 3.5, 14],
           "cubes": [
@@ -35,7 +35,7 @@
           ]
         },
         {
-          "name": "leftArm",
+          "name": "left_arm",
           "parent": "body",
           "pivot": [-3, 3.5, -4.5],
           "cubes": [
@@ -43,7 +43,7 @@
           ]
         },
         {
-          "name": "rightArm",
+          "name": "right_arm",
           "parent": "body",
           "pivot": [3, 3.5, -4.5],
           "cubes": [
@@ -67,30 +67,30 @@
           ]
         },
         {
-          "name": "leftLeg",
+          "name": "left_leg",
           "pivot": [-3, 4, 1.5],
           "cubes": [
             {"origin": [-4.5, 0, -0.5], "size": [3, 4, 4], "uv": [32, 0], "mirror": true}
           ]
         },
         {
-          "name": "leftClaws",
-          "parent": "leftLeg",
+          "name": "left_claws",
+          "parent": "left_leg",
           "pivot": [-3, 0.5, -0.5],
           "cubes": [
             {"origin": [-4, 0, -1.5], "size": [2, 1, 1], "uv": [42, 0], "mirror": true}
           ]
         },
         {
-          "name": "rightLeg",
+          "name": "right_leg",
           "pivot": [3, 4, 1.5],
           "cubes": [
             {"origin": [1.5, 0, -0.5], "size": [3, 4, 4], "uv": [32, 0]}
           ]
         },
         {
-          "name": "rightClaws",
-          "parent": "rightLeg",
+          "name": "right_claws",
+          "parent": "right_leg",
           "pivot": [3, 0.5, -0.5],
           "cubes": [
             {"origin": [2, 0, -1.5], "size": [2, 1, 1], "uv": [42, 0]}
