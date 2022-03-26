@@ -3,6 +3,9 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "package": "net.moddingplayground.endangered.mixin",
+  "mixins": [
+    "EntityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

@@ -21,24 +21,24 @@ public interface EndangeredEntityType extends Endangered, ModInitializer {
     EntityType<PangolinEntity> PANGOLIN = register("pangolin", 0x845A3F, 0x393231,
         FabricEntityTypeBuilder.createMob()
                                .entityFactory(PangolinEntity::new).spawnGroup(SpawnGroup.CREATURE)
-                               .dimensions(EntityDimensions.fixed(0.8F, 0.8F))
+                               .dimensions(EntityDimensions.fixed(0.63F, 0.63F))
                                .defaultAttributes(PangolinEntity::createPangolinAttributes)
                                .trackRangeChunks(8)
     );
 
-    private static <T extends MobEntity> EntityType<T> register(String id, int primary, int secondary, SpawnEggFactory egg, FabricEntityTypeBuilder<T> type) {
-        EntityType<T> built = type.build();
+    private static <T extends MobEntity> EntityType<T> register(String id, int primary, int secondary, SpawnEggFactory egg, FabricEntityTypeBuilder<T> builder) {
+        EntityType<T> type = builder.build();
         Optional.ofNullable(egg).ifPresent(f -> {
             Item.Settings settings = new FabricItemSettings().maxCount(64).group(ItemGroup.MISC);
-            Item item = f.apply(built, primary, secondary, settings);
+            Item item = f.apply(type, primary, secondary, settings);
             Registry.register(Registry.ITEM,  new Identifier(MOD_ID, "%s_spawn_egg".formatted(id)), item);
         });
-        return Registry.register(Registry.ENTITY_TYPE, new Identifier(MOD_ID, id), built);
+        return Registry.register(Registry.ENTITY_TYPE, new Identifier(MOD_ID, id), type);
     }
 
-    private static <T extends MobEntity> EntityType<T> register(String id, int primary, int secondary, FabricEntityTypeBuilder<T> entityType) {
-        return register(id, primary, secondary, SortedSpawnEggItem::new, entityType);
+    private static <T extends MobEntity> EntityType<T> register(String id, int primary, int secondary, FabricEntityTypeBuilder<T> builder) {
+        return register(id, primary, secondary, SortedSpawnEggItem::new, builder);
     }
 
-    @FunctionalInterface interface SpawnEggFactory { SpawnEggItem apply(EntityType<? extends MobEntity> type, int primaryColor, int secondaryColor, Item.Settings settings); }
+    @FunctionalInterface interface SpawnEggFactory { SpawnEggItem apply(EntityType<? extends MobEntity> type, int primary, int secondary, Item.Settings settings); }
 }

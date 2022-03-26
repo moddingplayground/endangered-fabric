@@ -1,5 +1,7 @@
 package net.moddingplayground.endangered.api.client.util;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
@@ -16,6 +18,7 @@ import java.util.function.Consumer;
 
 import static net.minecraft.client.render.entity.model.EntityModelPartNames.*;
 
+@Environment(EnvType.CLIENT)
 public interface AnimationUtil {
     /* Live Utilities */
 

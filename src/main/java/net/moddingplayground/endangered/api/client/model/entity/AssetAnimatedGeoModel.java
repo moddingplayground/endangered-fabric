@@ -1,9 +1,12 @@
 package net.moddingplayground.endangered.api.client.model.entity;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
+@Environment(EnvType.CLIENT)
 public class AssetAnimatedGeoModel<T extends IAnimatable> extends AnimatedGeoModel<T> {
     private final Identifier model, texture, animation;
 
